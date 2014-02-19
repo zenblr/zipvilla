@@ -1,0 +1,96 @@
+body,html {
+    margin: 0 5px;
+    font-family: Verdana,sans-serif;
+	  width: 1200;
+}
+h1 {
+    font-size: 1.4em;
+    color: #008000;
+}
+a {
+    color: #008000;
+}
+/* Table */
+th {
+    text-align: left;
+}
+td, th {
+    padding-right: 5px;
+}
+/* style form */
+form dt {
+    width: 200px;
+    display: block;
+    float: left;
+    clear: left;
+}
+form dd {
+    margin-left: 0;
+    float: left;
+}
+form #submitbutton {
+    margin-left: 100px;
+}
+
+#zvContainer {
+    background-color: #FFFFFF;
+    margin: 0 0 0 20px;
+    padding: 0;
+    width: 1000px;
+}
+#zvContainer #zvHeader {
+    float: left;
+    width: 1000px;
+    height: 70px;
+}
+
+#zvContainer h1 {
+    border-bottom: 3px solid #CC0000;
+    float: left;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+#zvContainer #whereTo {
+    float: left;
+    width: 500px;
+    height: 200
+}
+#zvContainer #colSearch {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 500px;
+}
+#colSearch #colSearchIcon {
+    float: left;
+    width: 50px;
+}
+#colSearch #colSearchText {
+    float: right;
+    width: 450px;
+}
+#zvContainer #zvSeperator {
+    border-top: 2px solid #CC0000;
+    float: left;
+    width: 1000px;
+}
+#zvContainer #content {
+	  margin: 0;
+    padding: 0;
+    float: left;
+    width: 700px;
+}
+#zvContainer #zvMapInfo {
+    float: right;
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    height: 250px
+}
+#zvContainer #zvFooter {
+    float: left;
+    width: 1000px;
+    height: 70px;
+}

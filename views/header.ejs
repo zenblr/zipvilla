@@ -1,0 +1,21 @@
+<div class="header"><!--header section-->
+    <div class="logo">
+        <a href="/"><img src="/images/logo_zipvilla.jpg" alt="Zipvilla" /></a>
+    </div>
+    <div class="v_top_nav l_top_nav">
+        <ul>
+            <% if ((typeof(isadmin) != 'undefined') && (isadmin == true)){ %>
+                <li><a id="index" href="/search/reindex">Index</a></li>
+            <% } %>
+            <li><a href="<?php echo $this->baseUrl('/show?doc=howzipvillaworks');?>">How Zipvilla Works</a></li>
+            <% if (typeof(loggedin) == 'undefined') { %>
+                <li><a href="/login">Login</a></li>
+                <li class="last"><a href="/login/register">Register</a></li>
+            <% } else { %>
+                <li>Welcome <%= loggedin %> &nbsp;</li> 
+                <li><a id="logout" href="/logout">Logout</a></li>
+                <li><a href="/account/index">Dashboard</a></li>
+            <% } %>
+        </ul>
+    </div><!--top_nav ends-->
+</div><!--header ends here-->

@@ -1,0 +1,80 @@
+/*.defaultText { width: 300px; }*/
+.defaultTextActive { color: #a1a1a1; font-style: italic; }
+
+.register .form-section .cancel {
+    background:url(../images/btn_cancel.jpg) top left no-repeat;
+    width:120px;
+    height:40px;
+    clear:right;
+    float:right;
+    cursor:pointer;
+}
+.ok {
+    background:url(../images/btn_ok.png) top left no-repeat;
+    width:80px;
+    height:40px;
+    clear:right;
+    float:right;
+    cursor:pointer;
+}
+.send {
+    background:url(../images/btn_send.png) top left no-repeat;
+    width:100px;
+    height:40px;
+    clear:both;
+    float:left;
+    cursor:pointer;
+	border:none;
+	margin-top:10px;
+}
+.cancel {
+    background:url(../images/btn_cancel.jpg) top left no-repeat;
+    width:100px;
+    height:40px;
+    clear:right;
+    float:right;
+    cursor:pointer;
+	border:none;
+	margin-top:10px;
+}
+.btn_login_fb img {
+    max-width:223px;
+    max-height:40px;
+    min-width:223px;
+    min-height:40px;
+	text-align:center;
+}
+.noscript { 
+	display: none; 
+}
+
+.info {
+    cursor: pointer;
+}
+
+.tooltip {
+    display: block;
+    position: absolute;
+    background-color: #FFFF00;
+    padding: 5px;
+}
+
+.zvdialog .ui-widget-header {
+	background-color:#F6A828;
+}
+.zvdialog .ui-dialog-content {
+    background-color:#EEEEEE;
+}
+.zvdialog .ui-dialog-buttonpane {
+	background-color:#EEEEEE;
+	margin-top:0;
+}
+.zvdialog .ui-icon-closethick {
+	background-position: -95px -125px;
+}
+
+.listing .villa_image img {
+    width:114px;
+    height:74px;
+}
+

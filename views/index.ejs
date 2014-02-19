@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Zipvilla ~ Home away from home in India</title>
+<link href="/css/misc.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/visual.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/layout.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/ui-lightness/jquery-ui-1.8.16.custom.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/lightbox.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/jquery.ad-gallery.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/galleriffic-2.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/skins/tango/skin.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/skins/ie7/skin.css" media="screen" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="/js/accordian.js"></script>
+<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript" src="/js/mapMarker.js"></script>
+<script type="text/javascript" src="/js/jquery.galleriffic.js"></script>
+<script type="text/javascript" src="/js/jquery.opacityrollover.js"></script>
+<script type="text/javascript" src="/js/galleriffic.js"></script>
+<script type="text/javascript" src="/js/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="/js/jquery.ad-gallery.js"></script>
+<script type="text/javascript" src="/js/slideshow.js"></script>
+<script type="text/javascript" src="/js/zvcommon.js"></script>
+<script type="text/javascript" src="/js/homepage.js"></script>
+</head>
+
+<body class="blue">
+    <div id="fb-root"></div>
+	<div class="wrapper"><!--outer wrapper to fix the width-->
+        <% include header %>
+		<div class="content">
+			<div class="srch_bx_home" style="height:320px;"><!--srch_bx_home-->
+				<h1>Discover amazing places to stay.</h1>
+				<p>1000s of exclusive properties in over a 100 cities awaiting your arrival.</p>
+
+				<div class="home_search"><!--home search-->
+					<form id="search_form_home" name="search_form_home" action="/search" method="post">
+                    <div class="search_homebx">
+                        <input class="search_home defaultText" type="text" name="query" id="query" size="73" title="Where do you want to go?" autocomplete="off" value="<?php echo $city;?>"/>
+                        <input class="submit_search" type="submit" value="" onclick="validate_default();return true;" />
+                        <div style="clear:both;"><p id="set_location" style="display:none;margin-top:10px;text-align:center;color:#CC3366;">Please enter a town or city.</p>
+                        </div>
+                        <div class="floatleft"><label for="checkin"><br/>Check in<br/>
+                            <input class="input_home defaultText checkin" title="<?php echo DATE_FORMAT;?>" type="text" size="10" name="check_in"  value="<?php echo $this->checkin;?>"/></label>
+                        </div>
+                        <div class="floatleft"><label for="checkout"><br/>Check out<br/>
+                            <input class="input_home defaultText checkout" title="<?php echo DATE_FORMAT;?>" type="text" size="10" name="check_out" value="<?php echo $this->checkout;?>"/></label>
+                        </div>
+                        <div class="floatleft">
+                            <label for="guests"><br/>Guests<br/>
+                                <select class="v_dropdwon_bg l_dropdwon_bg" style="margin-top:7px;height:30px;vertical-align:center;" id="guests" name="guests">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option value="10">10+</option>
+                                </select>
+                            </label>
+                        </div>
+                        <input type="hidden" id="page" name="page" value="1" />
+                    </div>
+					</form>
+				</div><!--home search ends-->
+			</div><!--srch_bx_home ends-->
+			
+			<div class="slide_right"><!--slideshow-right-->
+                <div id="gallery" class="slide_content">
+                    <div class="slideshow-container">
+                        <div id="loading" class="loader">
+                        </div>
+                        <div id="slideshow" class="slideshow">
+                        </div>
+                    </div>
+                    <div id="caption" class="caption-container">
+                    </div>
+                </div>
+                <div id="thumbs" class="navigation">
+                    <ul class="thumbs noscript">
+                    <% console.log(sponsored.length); %>
+                    <% if (typeof(error) != 'undefined') { %>
+                        <p>An error was encountered in search.</p>
+                    <% } %>
+                    <% if (sponsored.length > 0) { %> 
+			                <% for(var i=0; i<sponsored.length; i++) { 	
+                                var item = sponsored[i]; %>
+				                <li>
+					                <a class="thumb" name="<%= item.title %>" href="<%= item.image %>"title="<%= item.title %>"> <img src="/images/control.jpg" alt="villa image"/>
+					                <span id="url-path" style="display:none;">/list?id=<%= item.id %></span></a>
+						                <div class="caption">
+							                <a href="/list?id=<%= item.id %>"/>
+								                <div class="image-title">
+									                <div class="slide_text">
+										                <div class="floatleft">
+											                <h3><%= item.title %></h3>
+											                <span><PH></span>
+											                <h2><img src="/images/symbl_rupee.jpg" alt="rupeeImage" />
+											                <%= item.rate.daily %><span>&nbsp;Per night</span></h2>
+										                </div>
+										                <div class="v_ratings">
+											                <div class="ratings_div"><!--golden and silver stars-->
+												                <% for(var j=0; (j<item.rating) && (j < 5); j++) { %>
+														            <div><img src="/images/icon_ratings_gold.jpg"/></div>
+                                                                <% } %>
+												                <% for(var j=item.rating; j<5; j++) { %>
+														            <div><img src="/images/icon_ratings_silver.jpg"/></div>
+                                                                <% } %>
+												                <span><%= item.rating %>&nbsp;Ratings</span>
+											                </div>
+										                    <div class="reviews">
+											                    <p><%= item.reviews %></p><span>&nbsp;Reviews</span>
+										                    </div>
+									                    </div>
+								                    </div>
+							                    </div>
+						                    </a>
+					                    </div>
+				                </li>
+			                <% } %>
+		            <% } else { %>
+			                <p>No results were returned from search.</p>
+		            <% } %> 						
+	                </ul>
+                </div>
+			</div><!--slideshow-right ends-->
+			<div class="bg_slide_btm"></div>
+		</div> <!--content ends here-->
+
+		<div class="slide_bottom">
+	        <div id="tabs"><!--tabs-->
+		        <?php const VILLA_NAME_SMALL_SIZE = 15; ?>
+		        <ul>
+			        <li><a href="#tabs-1">Most viewed</a></li>
+			        <li><a href="#tabs-2">Most booked</a></li>
+			        <li><a href="#tabs-3">Most rated</a></li>
+		        </ul>
+
+		        <div id="tabs-1"><!--Most Viewed Tab-->
+
+                    <p>
+                    <ul id="mostViewedCarousel" class="first-and-second-carousel jcarousel-skin-tango">
+                    <?php if (isset($this->error)) { ?>
+                        <p>An error was encountered in search.</p>
+                    <?php } 
+                    elseif ($this->mostViewedListings != null) {
+                        foreach($this->mostViewedListings as $mostViewedData) {
+                            $image = $this->zvImage()->getFirstListingImage($this->baseUrl(), $mostViewedData);
+                            $title = $this->escape($mostViewedData->title);
+                            $url = $this->baseUrl().$this->escape($mostViewedData->id);
+                            if( strlen($title) > VILLA_NAME_SMALL_SIZE )
+                                $title = substr($title,0,(VILLA_NAME_SMALL_SIZE-3)).'...';
+                            $item = 
+                                    '<li>' .
+                                    '<img src="' .
+                                    $image .
+                                    '" height="70" width="110"/>'.
+                                    '<p>'.
+                                    $title .
+                                    '</p>'.
+                                    '<span><img src="'.
+                                    $this->baseUrl('/images/symbl_rupee.jpg') .
+                                    '" alt="Indian Rupee" />' .
+                                    $mostViewedData->rate['daily'].
+                                    '</span>' .
+                                    '</li>'
+                                    ;
+                            $items[] = $item; 
+                            $urls[] = $url;
+                        }
+                    }
+                    else { ?>
+                        <p>No results were returned from search.</p>
+                    <?php } ?> 
+                    </ul>
+                    </p>
+                    <script type="text/javascript">
+	                    mostViewedData = [
+ 		                    <?php for ($i=0; $i<count($items); $i++) {?> 
+			                    <?php if ($i> 0) {?>
+				                    , <?php //do not remove the ',' (comma) ?>
+			                    <?php }?>
+			                    '<?php echo '<a href="/list?id='.$urls[$i].'"/a>'. $items[$i] . '</a>';?>'
+		                    <?php }?>
+	                    ];
+                    </script>
+		        </div><!--Most Viewed Tab ends here-->
+			
+		        <div id="tabs-2"><!--Most Booked Tab-->
+
+                    <p>
+                    <ul id="mostBookedCarousel" class="first-and-second-carousel jcarousel-skin-tango">
+                    <?php if (isset($this->error)) { ?>
+                        <p>An error was encountered in search.</p>
+                    <?php } 
+                    elseif ($this->mostBookedListings != null) { 
+                        foreach($this->mostBookedListings as $mostBookedData) {
+                            $image = $this->zvImage()->getFirstListingImage($this->baseUrl(), $mostBookedData);
+                            $title = $this->escape($mostBookedData->title);
+                            $url = $this->baseUrl().$this->escape($mostBookedData->id);
+                            if( strlen($title) > VILLA_NAME_SMALL_SIZE )
+                                $title = substr($title,0,(VILLA_NAME_SMALL_SIZE-3)).'...';
+                            $item = 
+                                    '<li>' .
+                                    '<img src="' .
+                                    $image .
+                                    '" height="70" width="110"/>'.
+                                    '<p>'.
+                                    $title .
+                                    '</p>'.
+                                    '<span><img src="'.
+                                    $this->baseUrl('/images/symbl_rupee.jpg') .
+                                    '" alt="Indian Rupee" />' .
+                                    $mostBookedData->rate['daily'].
+                                    '</span>' .
+                                    '</li>'
+                                    ;
+                            $items[] = $item; 
+                            $urls[] = $url;
+                        }
+                    }
+                    else { ?>
+                        <p>No results were returned from search.</p>
+                    <?php } ?> 
+                    </ul>
+                    </p>
+                    <script type="text/javascript">
+	                    mostBookedData = [
+ 		                    <?php for ($i=0; $i<count($items); $i++) {?> 
+			                    <?php if ($i> 0) {?>
+				                    , <?php //do not remove the ',' (comma) ?>
+			                    <?php }?>
+			                    '<?php echo '<a href="/list?id='.$urls[$i].'"/a>'. $items[$i] . '</a>';?>'
+		                    <?php }?>
+	                    ];
+                    </script>
+		        </div><!--Most Booked Tab ends here-->
+
+		        <div id="tabs-3"><!--Most Rated Tab-->
+
+                    <p>
+                    <ul id="mostRatedCarousel" class="first-and-second-carousel jcarousel-skin-tango">
+                    <?php if (isset($this->error)) { ?>
+                        <p>An error was encountered in search.</p>
+                    <?php } 
+                    elseif ($this->bestRatedListings != null) { 
+                        foreach($this->bestRatedListings as $mostRatedData) {	
+                            $image = $this->zvImage()->getFirstListingImage($this->baseUrl(), $mostRatedData);
+                            $title = $this->escape($mostRatedData->title);
+                            $url = $this->baseUrl().$this->escape($mostRatedData->id);
+                            if( strlen($title) > VILLA_NAME_SMALL_SIZE )
+                                $title = substr($title,0,(VILLA_NAME_SMALL_SIZE-3)).'...';
+                            $item = 
+                                    '<li>' .
+                                    '<img src="' .
+                                    $image .
+                                    '" height="70" width="110"/>'.
+                                    '<p>'.
+                                    $title .
+                                    '</p>'.
+                                    '<span><img src="'.
+                                    $this->baseUrl('/images/symbl_rupee.jpg') .
+                                    '" alt="Indian Rupee" />' .
+                                    $mostRatedData->rate['daily'].
+                                    '</span>' .
+                                    '</li>'
+                                    ;
+                            $items[] = $item; 
+                            $urls[] = $url;
+                        }
+                    }
+                    else { ?>
+                        <p>No results were returned from search.</p>
+                    <?php } ?> 
+                    </ul>
+                    </p>
+                    <script type="text/javascript">
+	                    mostRatedData = [
+ 		                    <?php for ($i=0; $i<count($items); $i++) {?> 
+			                    <?php if ($i> 0) {?>
+				                    , <?php //do not remove the ',' (comma) ?>
+			                    <?php }?>
+			                    '<?php echo '<a href="/list?id='.$urls[$i].'"/a>'. $items[$i] . '</a>';?>'
+		                    <?php }?>
+	                    ];
+                    </script>
+		        </div><!--Most Rated Tab ends here-->
+	        </div>
+		</div>
+		
+        <?php $basePath = $this->baseUrl('/show?doc=');?>
+        <% include footer %>
+	</div><!--wrapper ends here-->
+</body>
+
+</html>
+

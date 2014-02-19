@@ -1,0 +1,613 @@
+.floatleft{
+	float:left;
+}
+.l_top_nav {
+	float:right;
+}
+.l_top_nav ul {
+	float:left;
+	margin-top:25px;
+}
+.l_top_nav ul .last {
+	border:none;
+	margin-right:0;
+	padding-right:0;
+}
+.l_top_nav li {
+	float:left;
+	margin-right:10px;
+	padding-right:10px;
+	border-right:1px dashed #b4bbbf;
+	list-style:none;
+	line-height:22px;
+}
+.content {
+	float:left;
+	width:100%;
+	height:auto;
+	margin:30px 0;
+}
+.l_search {
+	float:left;
+	padding:25px;
+}
+.l_search .l_search_input {
+	width:495px;
+	height:30px;
+	border:none;
+	padding:5px;
+	float:left;
+}
+.l_search div {
+	float:left;
+	margin-left:12px;
+}
+.l_search .l_input_bg, online_resrv .l_input_bg {
+	width:85px;
+	height:25px;
+	border:none;
+	padding-left:5px;
+}
+.l_search .l_dropdwon_bg {
+	width:45px;
+	height:24px;
+	/*border:none;
+	padding-left:5px;*/
+}
+.l_search .l_submit_search {
+	width:120px;
+	height:40px;
+	border:none;
+	margin-left:15px;
+	float:left;
+	cursor:pointer;
+}
+.l_search_results {
+	padding-bottom:23px;
+	float:left;
+	width:700px;
+	margin-top:20px;
+}
+.l_property_details{
+	padding:25px;
+	float:left;
+	width:650px;
+	margin-top:20px;
+	border-radius:4px;
+}
+.l_search_results .display_no {
+	float:left;
+	margin-top:5px;
+}
+.l_search_results .display_no p {
+	font-size:14px;
+}
+.l_search_results .display_no p span {
+	font-weight:bold;
+}
+.l_search_results .pagination {
+	float:right;
+}
+.l_search_results .pagination ul {
+	float:left;
+	margin-right:35px;
+	margin-top:-7px;
+}
+.l_search_results .pagination li {
+	float:left;
+	display:inline;
+	list-style:none;
+	margin:0px 2px 0 0;
+}
+.l_search_results .pagination li a {
+	padding:3px 7px;
+	margin-right:2px;
+}
+.l_search_results .pagination li a:hover, .l_search_results .pagination .current {
+	padding:3px 7px;;
+	margin-right:2px;
+}
+.l_search_results .pagination .current {
+	margin:-3px 4px 0 0;
+}
+.l_page_buttons {
+	float:right;
+	clear:both;
+	margin-top:5px;
+}
+.l_search_results .btn_next_page {
+	float:left;
+}
+.l_search_results .btn_prev_page {
+	float:left;
+	margin-right:3px;
+}
+.l_search_results .search_sort .dropdwon_bg {
+	width:134px;
+	height:25px;
+	/*border:none;
+	padding:2px 0 0 5px;*/
+}
+.l_search_results .search_sort {
+	/*float:right;*/
+	position:absolute;
+	top:10px;
+	right:0;
+}
+.l_search_results .tab_content .search_result, .l_search_results .tab_content .listing, .mang_list_ctnt .listing, .listing  {
+	position:relative;
+	float:left;
+	padding:8px 0;
+	border-bottom:1px dashed #ccc;
+}
+.l_search_results .tab_content .search_result .villa_image, .l_search_results .tab_content .listing .villa_image, .mang_list_ctnt .listing .villa_image, .listing .villa_image {
+	padding:6px;
+	float:left;
+}
+.l_search_results .tab_content .search_result .villa_image img, .l_search_results .tab_content .listing .villa_image img, .mang_list_ctnt .listing .villa_image img, .listing .villa_image img {
+	width:114px;
+	height:74px;
+}
+.l_search_results .tab_content .search_result .favorite {
+	float:left;
+	margin:4px 8px 0 8px;
+}
+.l_search_results .tab_content .search_result .resort_details, .l_search_results .tab_content .listing .resort_details, .listing .resort_details {
+	float:left;
+	width:370px;
+}
+.mang_list_ctnt .listing .resort_details{
+	width:83%!important;
+	margin-left:15px!important;
+	float:left;
+}
+.mang_list_ctnt .listing .resort_details p{
+	width:auto!important;
+}
+.listing .resort_details{
+	margin-left:15px;
+}
+.l_search_results .tab_content .search_result .resort_details h2, .l_search_results .tab_content .listing .resort_details h2, .mang_list_ctnt .listing .resort_details h2, .listing .resort_details h2 {
+	color:#09c;
+	text-transform:none;
+	letter-spacing:0;
+}
+.l_search_results .tab_content .search_result .resort_details p span {
+	float:right;
+	color:#69ad44;
+}
+.l_search_results .tab_content .search_result .resort_details .reviews {
+	text-align:center;
+	width:30px;
+	height:30px;
+	float:left;
+	margin-top:5px;
+}
+.l_search_results .tab_content .search_result .resort_details .reviews p {
+	color:#c63;
+	font-weight:bold;
+	margin-top:4px;
+	text-align:center;
+}
+.l_search_results .tab_content .search_result .resort_details .reviews span, .search_results .tab_content .search_result .resort_details .ratings span {
+	color:#666;
+	font-weight:normal;
+	font-size:9px;
+	text-transform:uppercase;
+	margin-top:8px;
+	text-align:center;
+	float:left;
+}
+.l_search_results .tab_content .search_result .resort_details .ratings span {
+	clear:both;
+	margin-left:30px;
+}
+.tab_content .search_result .price span {
+	color:#666;
+	font-weight:normal;
+	font-size:9px;
+	text-transform:uppercase;
+	float:right;
+	margin:0 0 0 30px;
+}
+.l_search_results .tab_content .search_result .resort_details .ratings {
+	float:left;
+}
+.l_search_results .tab_content .search_result .resort_details .ratings ul {
+	float:left;
+	margin:10px 0 0 30px;
+	clear:right;
+}
+.l_search_results .tab_content .search_result .resort_details .ratings li {
+	float:left;
+	display:inline;
+	list-style:none;
+	margin-right:3px;
+}
+.l_search_results .tab_content .search_result .price {
+	float:right;
+	width:120px;
+}
+.l_search_results .tab_content .search_result .price p {
+	font-size:26px;
+	font-weight:bold;
+	color:#cc3366;
+	float:right;
+}
+
+.tab_search_map {
+	background-color:#fff;
+	padding:10px;
+	border-radius:4px;
+	float:left;
+	width:633px;
+	height:500px;
+	/*margin-bottom:30px;*/
+}
+
+.l_right_side_panel {
+	float:left;
+	width:240px;
+	margin:33px 0 0 20px;
+}
+.l_property_right {
+	float:left;
+	width:235px;
+	margin:33px 0 0 25px;
+}
+.l_right_side_panel h3 {
+	color:#333;
+	float:left;
+}
+.l_right_side_panel p {
+	float:right;
+}
+.l_right_side_panel .map{
+	float:left;
+	width:240px;
+	height:220px;
+	margin:10px 0;
+}
+.l_right_side_panel .map iframe {
+	width:240px;
+	height:220px;
+	border-radius:4px;
+	border:1px solid #ccc;
+}
+.l_refine_results{
+	float:left;
+	background-color:#f5f5f5;
+	width:220px;
+	border-radius:4px;
+	border:1px solid #dfdfdf;
+	margin-top:30px;
+	padding:10px;
+}
+.l_refine_results h4 {
+	margin:0;
+}
+.l_accordian_open {
+	float:left;
+	margin-right:10px;
+}
+.l_price {
+	float:left;
+	padding:10px 0;
+	border-bottom:1px dashed #ccc;
+	width:100%;
+}
+.l_slider{
+	background-color:#c0dbb1;
+	height:12px;
+	width:90%;
+	margin:15px 0;
+}
+.l_slider img {
+	float:left;
+	margin-top:-6px;
+}
+.l_low_price {
+	float:left;
+	color:#000;
+}
+.l_height_price {
+	float:right;
+	color:#000;
+}
+.l_km {
+	text-align:center;
+	color:#000;
+}
+.l_styled {
+      width: 14px;
+      height: 15px;
+      display: block;
+      clear: left;
+      float: left;
+}
+.l_right_side_panel .l_chkbox form {
+	margin-top:10px;
+}
+.l_right_side_panel .l_chkbox p{
+	float:left;
+}
+.l_room_nos{
+	background-color:#cfe5c4;
+	float:right;
+	width:25px;
+	height:17px;
+	-moz-border-radius:4px;
+	color:#82ad5a;
+	text-align:center;
+}
+.l_right_side_panel .l_cta {
+	float:right;
+	clear:both;
+}
+.l_right_side_panel .l_cta a {
+	color:#09c;
+}
+
+/*************Registration Page***************/
+.l_rgstr_frm {
+	float:left;
+}
+
+/*****************detailed page******************************/
+.l_social_ico {
+	float:left;
+	width:100%;
+}
+.l_link_back_page {
+	float:left;
+	padding-left:20px;
+}
+.l_social_netwrk{
+	float:right;
+	margin-top:15px;
+}
+.v_listing_header .v_ratings .reviews, .slide_text .v_ratings .reviews {
+	text-align:center;
+	width:30px;
+	height:30px;
+	float:left;
+	margin-top:5px;
+}
+.v_listing_header .v_ratings .reviews p, .slide_text .v_ratings .reviews p {
+	color:#c63;
+	font-weight:
+	bold;margin-top:4px;
+	text-align:center;
+}
+.l_about_villa_left{
+	float:left;
+	width:400px;
+	margin:10px 15px 0 0;
+}
+.l_about_villa_left h2, .l_about_villa_right h2, .ratng_rvews h2{
+	color:#333;
+	text-transform:inherit;
+}
+.ratng_rvews h2 {
+	float:left;
+	margin-bottom:10px;
+	width:100%;
+}
+.l_about_villa_left p{
+	text-align:justify;
+}
+.l_about_villa_right{
+	float:left;
+	width:230px;
+	margin-top:10px;
+}
+.amnts{
+	float:left;
+}
+.amnts ul{
+	float:left;
+	margin:10px 0 20px 0;
+}
+.amnts li{
+	float:left;
+	display:inline;
+	margin-right:5px;
+}
+.ratng_rvews {
+	float:left;
+	width:100%;
+	border-top: 10px solid #daeffa;
+	border-bottom:1px dashed #ccc;
+	margin:10px 0 0 0;
+	padding:10px 0;
+}
+.write_review {
+	float:right;
+	width:200px;
+}
+.write_review p {
+	float:right;
+}
+.btn_write_review{
+	float:right;
+	margin-top:5px;
+}
+.list_review{
+	float:left;
+	width:100%;
+	border-bottom:1px dashed #ccc;
+	margin:10px 0 0 0;
+	padding:10px 0;
+}
+.img_profle {
+	float:left;
+	width:92px;
+	height:122px;
+	border:1px solid #ccc;
+	padding:4px;
+	text-align:center;
+	clear:both;
+}
+.img_profle p{
+	color:#09c;
+	clear:both;
+	margin:0;
+	font-weight:bold;
+	width:100%;
+	text-align:center;
+	line-height:16px;
+}
+.img_profle p span{
+	color:#666;
+	font-size:10px;
+	line-height:16px;
+	clear:both;
+	margin:0;
+	font-weight:normal;
+}
+.review {
+	float:left;
+	margin-left:20px;
+	width:530px;
+}
+.review h2 {
+	color:#cc6633;
+	text-transform:inherit;
+}
+.review p {
+	text-align:justify;
+}
+.form_write_review{
+	background-color:#ccc;
+	float:left;
+	width:97%;
+	margin:10px 0 0 0;
+	padding:10px;
+	-moz-border-radius:4px;
+}
+.form_write_review .input{
+	background:none;
+	border:none;
+	text-align:center;
+	color:#333;
+	font-weight:bold;
+	width:100%;
+}
+.online_resrv
+{
+	float:left;
+	width:226px;
+	height:235px;
+	margin:10px 0 0 0;
+	background-color:#eff6eb;
+	-moz-border-radius:4px;
+	border:1px solid #b3d5a0;
+	padding:7px;
+}
+.online_resrv  label{
+	font-size:12px;
+	font-weight:normal;
+	float:left;
+	margin-right:8px;
+}
+.online_resrv .l_input_bg{
+	background-image:none;
+	background-color:#fff;
+	-moz-border-radius:3px;
+	border:1px solid #ccc;
+	width:80px;
+	font-size:12px;
+}
+.online_resrv .l_dropdwon_bg {
+	width:25px;
+	height:16px;
+	border:none;
+	padding-left:5px;
+	border:1px solid #ccc;
+	-moz-border-radius:3px;
+}
+.online_resrv p{
+	float:left;
+}
+.online_resrv h2{
+	color:#cc3366;
+	float:left;
+	clear:both;
+}
+.form_online {
+	float:left;
+	clear:both;
+	border-top:1px dashed #ccc;
+	border-bottom:1px dashed #ccc;
+	padding-top:10px;
+	margin-top:5px;
+	width:100%;
+}
+.online_resrv_dropdwn {
+	float:right;
+}
+.sub_total {
+	float:left;
+	width:100%;
+	margin-top:10px;
+}
+.sub_total button{
+	margin-left:10px;
+	float:	left;
+}
+.online_resrv .sub_total h2{
+	color:#666;
+	float:left;
+	clear:both;
+	text-transform:inherit;
+	font-weight:normal;
+}
+.online_resrv .sub_total span{
+	font-size:9px;
+	color:#666;
+	float:left;
+	clear:both;
+}
+.btn_send_details {
+	margin:10px 0 0 3px;
+	float:left;
+}
+.acco_dtls{
+	float:left;
+	border-bottom:1px dashed #ccc;
+	width:100%;
+}
+.acco_dtls p{
+	float:left;
+	width:100%;
+	padding:5px 0;
+}
+.acco_dtls p span{
+	float:right;
+	font-weight:bold;
+}
+.acco_dtls p .blue{
+	color:#0099cc;
+}
+.host_ratings {
+	float:left;
+	width:100px;
+	margin:5px 0 0 10px;
+}
+.host_ratings span{
+	width:100%;
+	float:left;
+}
+.host_ratings p {
+	font-weight:bold;
+	clear:both;
+	float:left;
+	margin-bottom:10px;
+}
+.what{
+	margin-left:5px;
+	float:left;
+}
+.l_price .form_write_review{
+	width:92%;
+}

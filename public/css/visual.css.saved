@@ -1,0 +1,668 @@
+@charset "utf-8";/*embeds Lato font*/
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: normal;
+	src: url('Lato-Regular.eot');
+    src: local("?"), url("Lato-Regular.woff") format("woff"), url("Lato-Regular.ttf") format("truetype"), url("Lato-Regular.svg#webfontBsXB6tm7") format("svg");
+}
+/*Global styles*/
+body,img,p,ul,li, h2, h3, h1 {
+	font-family:Lato, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#666;
+	margin:0;
+	padding:0;
+	border:none;
+	outline:none;
+}
+label {
+	font-size:14px;
+	font-weight:bold;
+	clear:both;
+	float:left;
+	margin-bottom:20px;
+}
+a {
+	text-decoration:
+	none;outline:none;
+	color:#000;
+}
+p {
+	line-height:22px;
+}
+h1 {
+	font-size:55px;
+	color:#69ad44;
+	/*letter-spacing:1px;*/
+	font-weight:bolder;
+	text-shadow: 1px 1px 1px #69ad44;
+}
+h2 {
+	font-size:18px;
+	color:#fff;
+	letter-spacing:1px;
+	text-transform:uppercase;
+}
+h3 {
+	font-size:16px;
+	font-weight:bold;
+	color:#fff;
+}
+input {
+	color:#0099CC;
+}
+body {
+	background:#fff url(../images/bg_body.jpg) top center repeat-x;
+	margin:0 auto;
+}
+.wrapper {/*fixed width for all the content*/
+	margin:0 auto;
+	width:960px;
+}
+.header {
+	float:left;
+	height:61px;
+	width:100%;
+}
+.header .logo {
+	float:left;
+	margin:17px 0 0 4px;
+}
+.v_top_nav li {
+	font-size:14px;
+	font-weight:bold;
+	border-right:1px dashed #b4bbbf;
+	list-style:none;
+}
+.v_top_nav li a {
+	color:#09c;
+}
+.v_top_nav li a:hover {
+	color:#666;
+}
+.v_search_form {
+	background:url(../images/bg_search_form.jpg) top center no-repeat;
+	width:960px;
+	height:90px;
+}
+.v_search .v_search_input{
+	background:url(../images/bg_search_result_page.jpg) top left no-repeat;
+	font-size:16px;
+	font-weight:bold;
+	color:#09c;
+}
+.v_search label {
+	color:#333;
+}
+.v_search .v_input_bg, .online_resrv .v_input_bg{
+	background:url(../images/bg_input1.jpg) top center no-repeat;
+}
+.v_search .v_dropdwon_bg {
+	background:url(../images/bg_input2.jpg) top center no-repeat;
+	color:#09c;
+}
+.v_search .v_submit_search {
+	background:url(../images/btn_search.jpg) top center no-repeat;
+}
+.v_search_results {
+	background:url(../images/bg_search_result.jpg) center bottom no-repeat;
+}
+.v_search_results .tab_content {
+	background-color:#fff;
+	padding:10px;
+	border-radius:4px;
+	float:left;
+	width:97%;
+}
+.v_search_results .display_no p {
+	font-size:14px;
+}
+.v_search_results .pagination li a {
+	background-color:#5ea0ce;
+	color:#fff;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+}
+.v_search_results .pagination li a:hover, .v_search_results .pagination .current {
+	background-color:#fff;
+	color:#5ea0ce;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+}
+.v_search_results .search_sort .dropdwon_bg {
+	/*background:url(../images/bg_input3.jpg) top center no-repeat;*/
+	color:#09c;
+}
+.v_search_results .search_sort {
+	color:#666;
+}
+.v_search_results .tab_content .search_result .villa_image {
+	background-color:#fff;
+	border:1px solid #ccc;
+	width:115px;
+	height:75px;
+}
+.v_search_results .tab_content .search_result .search_no {
+	background-color:#fff;
+	color:#c36;
+	text-align:center;
+	width:16px;
+	height:16px;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.v_search_results .tab_content .search_result .resort_details .reviews {
+	background:url(../images/bg_circle_review.jpg) top center no-repeat;
+}
+.v_refine_results{}
+.footer {
+	background:url(../images/bg_footer.png) top center no-repeat;
+	float:left;
+	height:46px;
+	width:940px;
+	padding:75px 10px 0 10px;
+}
+.dsclimr  {
+	float:left;
+}
+.dsclimr span {
+	font-weight:bold;
+	margin-right:45px;
+	float:left;
+}
+.dsclimr a	{
+	color:#666;
+	text-decoration:underline;
+	margin:0 10px;
+}
+.v_futr_nav, .social_ico {
+	float:left;
+}
+.v_futr_nav ul {
+	float:left;
+	margin:0 10px 0 60px;
+}
+.social_ico ul {
+	float:left;
+}
+.v_futr_nav li, .social_ico li{
+	line-height:22px;
+	float:left;
+	display:inline;
+	list-style:none;
+}
+.v_futr_nav li{
+	margin-right:20px;
+}
+.social_ico li {
+	margin-right:10px;
+}
+.v_futr_nav li a {
+	color:#666;
+}
+/*************Registration Page***************/
+.v_rgstr_frm {
+	background:url(../images/bg_rgstr_page.jpg) top left repeat;
+	width:910px;
+	-moz-border-radius:4px;
+	padding:25px;
+}
+.register {
+	background-color:#fff;
+	border:2px dotted #ccc;
+	float:left;
+	width:440px;
+	margin:25px 0;
+	padding:25px;
+}
+.register .form-section input {
+	background:url(../images/bg_input_regi.jpg) top left no-repeat;
+	height:25px;
+	width:245px;
+	border:none;
+	float:left;
+	margin-top:10px;
+	padding:0 10px;
+}
+.register .form-section .username {
+	background:url(../images/bg_username.jpg) top left no-repeat;
+	height:40px;
+	width:415px;
+	border:none;
+	padding:0 10px;
+}
+.register .form-section .input {
+	background:url(../images/btn_creat_accnt.jpg) top left no-repeat;
+	width:169px;
+	height:40px;
+	clear:both;
+	float:left;
+	cursor:pointer;
+}
+.register .form-section .login {
+	background:url(../images/btn_login.jpg) top left no-repeat;
+	width:120px;
+	height:40px;
+	clear:both;
+	float:left;
+	cursor:pointer;
+}
+.register .form-section .chk_bx{
+	float:left;
+	width:300px;
+}
+.register .form-section .remeber_me{
+	float:right;
+	margin-top:10px;
+}
+.register .form-section .chk_bx input, .register .form-section .remeber_me input{
+	background:none;
+	float:left;
+	width:20px;
+	margin-right:5px;
+	border:none;
+}
+.register .form-section .remeber_me p {
+	width:175px;
+	line-height:44px;
+}
+.register .form-section .chk_bx p{
+	line-height:44px;
+}
+.register .form-section .chk_bx p a{
+	color:#0099cc;
+}
+.v_ctnt_right_regst {
+	float:left;
+	width:300px;
+	margin:50px 0 0 100px;
+}
+.v_ctnt_right_regst p{
+	font-size:18px;
+	margin-top:30px;
+}
+.v_ctnt_right_regst p span a{
+	font-size:14px;
+	color:#0099cc;
+}
+.error_msg {
+	background:url(../images/bg_errormsg.jpg) top left no-repeat;
+	width:960px;
+	height:30px;
+	float:left;
+	margin-bottom:20px;
+	text-align:center;
+	padding-top:10px;
+}
+.error_msg p{
+	font-size:14px;
+	font-weight:bold;
+}
+
+/****************detailed page********************/
+.v_social_ico {
+}
+.v_link_back_page {
+	background:url(../images/btn_backpage.jpg) top left no-repeat;width:200px;height:17px;
+	color:#0099CC;
+}
+.v_link_back_page a {
+	color:#0099CC;
+}
+.v_link_back_page a:hover {
+	color:#666;
+}
+.v_listing_header {
+	background:url(../images/bg_list_header.jpg) top center no-repeat;
+	width:930px;
+	height:70px;
+	float:left;
+	padding:10px 15px;
+}
+.h2 {
+	float:left;
+}
+.h2 h1{
+	font-size:36px;
+	color:#69ad44;
+	font-weight:bold;
+	text-shadow: 0 0 1px #69ad44;
+	float:left;
+}
+.h2 h2 {
+	color:#666;
+	font-weight:normal;
+	text-shadow:none;
+	text-transform:none;
+	clear:both;
+	float:left;
+}
+.h2 span a{
+	background:url(../images/icon_favorite.jpg) center left no-repeat;
+	width:16px;
+	height:14px;
+	float:left;
+	margin:10px 0 0 5px;
+}
+.h2 span a:hover{
+	background:url(../images/icon_favorite-a.jpg) center left no-repeat;
+}
+.entire_villa {
+	background-color:#e4e4e4;
+	float:left;
+	-moz-border-radius:4px;
+	-moz-border-radius:4px;
+	margin:0 0 0 10px;
+}
+.entire_villa p{
+	color:#666;
+	font-weight:normal;
+	text-shadow:none;
+	padding:2px 7px;
+}
+.v_ratings{
+	float:right;
+}
+.v_listing_header .ratings span, .v_listing_header .v_ratings .reviews span, .slide_text .v_ratings .reviews{
+	color:#666;
+	font-weight:normal;
+	font-size:9px;
+	text-transform:uppercase;
+	margin-top:8px;
+	text-align:center;
+	float:left;
+}
+.ratings span {
+	clear:both;
+	margin-left:50px;
+}
+.ratng_rvews .ratings span {
+	clear:both;
+	margin:0;
+	font-size:11px;
+	width:100%;
+	float:left;
+}
+.ratng_rvews .ratings{
+	text-align:left;
+}
+.ratings {
+	width:135px;
+	float:left;
+	margin-right:25px;
+	text-align:center;
+}
+.ratings ul {
+	float:left;
+	margin:10px 0 0 30px;
+	clear:right;
+}
+.ratng_rvews .ratings ul{
+	margin:5px 0 5px 0;
+	clear:both;
+	width:100%;
+}
+.ratings li {
+	float:left;
+	display:inline;
+	list-style:none;
+	margin-right:3px;
+}
+.v_listing_header .v_ratings .reviews, .slide_text .v_ratings .reviews {
+	background:url(../images/bg_circle_review.jpg) top center no-repeat;
+}
+.slide{
+	float:left;
+	margin-top:-10px;
+	border-bottom: 10px solid #daeffa;
+	padding-bottom:10px;
+	width:100%;
+}
+/****Home page********/
+.srch_bx_home{
+	background:url(../images/bg_search_home.jpg) top left no-repeat;
+	width:450px;
+	height:300px;
+	float:left;
+	padding:25px;
+	margin-right:25px;
+}
+.home_search{
+	float:left;
+
+}
+.home_search .search_homebx {
+	background-color:#fbe0e0;
+	width:433px;
+	height:48px;
+	border-radius:4px;
+	margin:20px 0;
+}
+.home_search .search_home{
+	background:url(../images/bg_search_home1.jpg) top left no-repeat;
+	width:280px;
+	height:20px;
+	border:none;
+	margin:4px 0 0 4px;
+	padding:10px;
+	float:left;
+}
+.home_search .submit_search {
+	background:url(../images/btn_search.jpg) top left no-repeat;
+	width:120px;
+	height:40px;
+	border:none;
+	cursor:pointer;
+	float:left;
+	margin:4px 0 0 4px;
+}
+.home_search .input_home {
+	background:url(../images/bg_checkin.jpg) top left no-repeat;
+	width:90px;
+	height:20px;
+	border:none;
+	padding:5px;
+	float:left;
+	margin-right:35px;
+	margin-top:7px;
+}
+.home_search .guest_home{
+	background:url(../images/bg_guests_home.jpg) top left no-repeat;
+	width:35px;
+	height:20px;
+	padding:5px;
+	margin-top:7px;
+	border:none;
+	float:left;
+}
+.slide_right{
+	float:left;
+	width:422px;
+	height:300px;
+	padding:10px 0 10px 8px;
+	border-right:1px solid #eeeeef;
+	border-left:1px solid #eeeeef;
+	border-top:1px solid #eeeeef;
+	border-radius:4px;
+}
+.bg_slide_btm{
+	background:url(../images/bg_btm_slideshow.jpg) center bottom no-repeat;
+	width:432px;
+	height:15px;
+	float:left;
+}
+.slide_text {
+	float:left;
+	position:relative;
+	top:240px;
+	z-index:999;
+	width:75%;
+}
+.slide_text h3{
+	color:#09c;
+}
+.slide_text h3 span{
+	font-size:12px;
+	color:#666;
+	font-weight:normal;
+}
+.slide_text h2{
+	color:#cc3366;
+	margin-top:5px;
+	text-transform:inherit;
+}
+.slide_text h2 span{
+	font-size:12px;
+	color:#666;
+	font-weight:normal;
+	text-transform:inherit;
+}
+.slide_right .slide_text .v_ratings {
+	float:right;
+	width:200px;
+	height:55px;
+}
+.slide_right .slide_text .v_ratings .ratings ul li img {
+	display:inline;
+	position:static;
+	border:none;
+}
+.v_ratings .ratings_div span{
+	margin-left:20px;
+	font-size:12px;
+	font-weight:normal;
+	clear:both;
+}
+.v_ratings .ratings_div{
+	width:115px;
+	float:left;
+	margin:4px 20px 0 20px;
+}
+.v_ratings .ratings_div div{
+	float:left;
+	margin:0 3px 0 0;
+}
+.v_ratings .reviews span{
+	margin:5px 0 0 -5px;
+	float:left;
+}
+.slide_bottom{
+	width:100%;
+	float:left;
+	clear:both;
+	margin:20px 0;
+}
+/****availability page****/
+.slct_mnth {
+	float:left;
+	width:100%;
+}
+.slct_mnth_dropdwn {
+	float:left;
+	width:300px;
+	height:25px;
+	margin:20px 0;
+}
+.slct_mnth_dropdwn p {
+	float:left;
+	margin-right:10px;
+}
+.dropdown_sm {
+	/*background:url(../images/bg_select_mnth.jpg) top left no-repeat;*/
+	width:185px;
+	height:25px;
+	color:#09c;
+	/*border:none;*/
+}
+.calendar1 {
+	float:left;
+	width:400px;
+}
+.calendar1 table{
+	width:395px;
+	height:330px;
+	border-radius:4px;
+	background-color:#fff;
+}
+.calendar1 table th{
+	background-color:#f0f0f0;
+	font-weight:bold;
+	color:#999;
+	text-align:center;
+	height:50px;
+}
+.calendar1 table td{
+	background-color:#dedede;
+	color:#333;
+	text-align:right;
+	padding:3px 3px 0 0;
+	border-top:2px solid #fff;
+	border-right:2px solid #fff;
+	width:50px;
+	height:51px;
+	margin:0;
+	vertical-align:baseline;
+}
+.calendar1 table td span{
+	float:right;
+	margin:0;
+	padding:0;
+}
+.calendar1 table .nobrdr {
+	border-right:none;
+}
+.calendar1 table .avail {
+	background-color:#c8dcbc;
+}
+.calendar1 table .unavail {
+	background-color:#f2bcce;
+}
+.calendar1 .today_price {
+	font-size:10px;
+	font-weight:bold;
+	margin-top:5px;
+	padding:0;
+}
+.refer {
+	float:left;
+	margin:10px 0;
+}
+.calendar1 .key{
+	float: left;
+    margin-right: 5px;
+    width: 30px;
+}
+.calendar1 .available {
+	background:url(../images/ico_avail.jpg) left top no-repeat;
+	width:20px;
+	height:20px;
+	float:left;
+}
+.calendar1 .unavailable {
+	background:url(../images/ico_unavail.jpg) left top no-repeat;
+	width:20px;
+	height:20px;
+	float:left;
+}
+.calendar1 .past {
+	background:url(../images/ico_past.jpg) left top no-repeat;
+	width:20px;
+	height:20px;
+	float:left;
+}
+.calendar1 .key-text{
+	float:left;
+    margin-right:10px;
+}
+.avail_note{
+	float:left;
+	margin-left:15px;
+	width:230px;
+}
+.avail_note h2{
+	color:#333;
+	text-transform:inherit;
+	margin:10px 0;
+}

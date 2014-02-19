@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Zipvilla ~ Login</title>
+<link href="/css/visual.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/layout.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/ui-lightness/jquery-ui-1.8.16.custom.css" media="screen" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="/js/accordian.js"></script>
+<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript" src="/js/zvcommon.js"></script>
+</head>
+<body class="blue">
+ <div id="fb-root"></div>
+    <div class="wrapper"><!--outer wrapper to fix the width-->
+        <% include header %>
+        <div class="content"><!--content starts here-->
+        <div class="v_rgstr_frm l_rgstr_frm">
+            <h1>Login to Zipvilla.</h1>
+            <div class="register"><!--left side content-->
+                <div class="form-section">
+                    <form method="post" id="register" name="register" action="#">
+                        <label for="username">Email address :<br />
+                            <input class="username" type="text" id="username" size="37" name="username" value="<?php echo $username;?>"/>
+                        </label>
+                        <label for="password">Password :<br />
+                            <input type="password" class="username" id="password" size="37" name="password"/>
+                        </label>
+                        <input class="login" type="submit" id="login" name="login" value=""/>
+                        <div class="remeber_me"><input type="checkbox" /><p>Remember me next time</p></div>
+                    </form>
+                </div> <!-- / form-section -->
+            </div><!--left side content ends-->
+            <div class="v_ctnt_right_regst"><!--right side content-->
+                <div><a href="#" onclick="login('','','.error_msg'); return false;"><img src="images/btn_connect_fb.jpg" alt="facebook"></a></div>
+                <p>Forgot your username<br>or password?<br><span><a href="#">Recover it now.</a></span></p>
+                <p>Don’t have an account?<br><span><a href="<?php echo $baseUrl.'/login/register'?>">Register now.</a></span></p>
+            </div><!--right side content ends-->
+        </div><!--registration form ends here-->
+        </div><!--content ends here-->
+        <% include footer %>
+    </div><!--wrapper ends here-->
+</body>
+</html>
+
