@@ -51,7 +51,7 @@ $(document).ready(function() {
 	
 		$("#guests").val('1');
 		$('#query').data('lastValue', '<?php //echo $this->search_query;?>');
-		$('#query').autocomplete({source:'/default/search/autocomplete/format/json'});
+		$('#query').autocomplete({source:'/searchcity'});
 
 		$('#search_form_home').submit(function() {
 			if( $('#query').val() == "") {

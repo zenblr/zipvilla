@@ -1,0 +1,475 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Search Results - Zipvilla ~ Home away from home in India</title>
+<link href="/css/misc.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/visual.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/layout.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/ui-lightness/jquery-ui-1.8.16.custom.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/css/lightbox.css" media="screen" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="/js/accordian.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="/js/mapMarker.js"></script>
+<script type="text/javascript" src="/js/zvcommon.js"></script>                                       
+<script type="text/javascript" src="/js/searchpage.js"></script>                                       
+</head>
+  <body class="blue">
+  <div id="fb-root"></div>
+  <div class="wrapper"><!--outer wrapper to fix the width-->
+      <% include header %>
+      <div class="content">
+          <form id="search_form" name="search_form" action="/search" method="post">
+          <div class="v_search_form">
+              <div class="v_search l_search">
+                  <input type="hidden" id="page" name="page" value="1" />
+                  <input type="hidden" id="showtab" name="showtab" value="0" />
+                  <input class="l_search_input v_search_input defaultText" type="text" title="Where do you want to go?" name="query" id="query" autocomplete="off" size="73" value="<%=qparams.query.city_state.join(' ').replace(/\'/g, '')%>" />
+                  <div><label for="checkin">Check in<br />
+                      <input class="l_input_bg v_input_bg defaultText checkin" title="dd-mon-yyyy" type="text" size="10" name="check_in"  value="<%=qparams.checkin%>"/></label>
+                  </div>
+                  <div><label for="checkout">Check out<br />
+                      <input class="l_input_bg v_input_bg defaultText checkout" title="dd-mon-yyyy" type="text" size="10" name="check_out" value="<%=qparams.checkout%>"/></label>
+                  </div>
+              <div>
+              <label for="guests">Guests<br/>
+                  <select class="v_dropdwon_bg l_dropdwon_bg" id="guests" name="guests">
+                      <% for (var i=1; i<=10; i++) { %>
+                        <option value ="<%=i%>" <% if (qparams.guests == i) { %> selected <% } %> ><%=i%><% if (i == 10) { %>+<% } %></option>
+                      <% } %>
+                  </select>
+              </label>
+          </div>
+          <input class="v_submit_search l_submit_search" type="submit" onclick="setPage(1); validate_default();resetCriteria(); return true;" value=""/>
+      </div>
+  </div>
+  <div class="l_search_results v_search_results"><!--Search result sections starts here-->
+    <div id="loadergif">
+    </div>
+    <div id="tabs" class="ui-tabs"><!--tabs-->
+        <ul>
+            <li><a href="#tabs-1">List</a></li>
+            <li><a href="#tabs-2">Photo</a></li>
+            <li><a href="#tabs-3">Map</a></li>
+        </ul>
+        <div class="search_sort">
+            <label for="sort_by">Sort by
+                <select onchange="setPage(1); validate_default(); document.search_form.submit();" class="dropdwon_bg" id="sort" name="sort">
+                    <option id="select_r"  value="r" >Recommended</option>
+                    <option id="select_hl" value="hl">Rate (high to low)</option>
+                    <option id="select_lh" value="lh">Rate (low to high)</option>
+                </select>
+            </label>
+        </div>
+        <%
+        var numpages = count/qparams.pagesize;
+        if (count%qparams.pagesize > 0) {
+            numpages++;
+        }
+
+        var pg1 = (qparams.page == 1 ? 1 : qparams.page-1);
+        var pg2;
+        var pg3;
+        var nextpagebtn = null;
+        var prevpagebtn = null;
+        var thispage = null;
+
+        if (pg1 == 1) {
+            pg2 = (2 > numpages ? null : 2);
+            pg3 = (3 > numpages ? null : 3);
+            thispage = pg1;
+            nextpagebtn = (pg2 == null ? null: pg2);
+            prevpagebtn = null;
+        }
+        else {
+            pg2 = qparams.page; 
+            thispage = pg2;
+            pg3 = ((pg2 + 1) > numpages ? null : pg2 + 1); 
+            nextpagebtn = pg3;
+            prevpagebtn = pg1;
+            if (pg3 == null) {
+                nextpagebtn = null;
+                if (pg1 > 1) {
+                    pg1--;
+                    pg2--;
+                    pg3 = qparams.page;
+                    thispage = pg3;
+                    prevpagebtn = pg2;
+                }
+            }
+        }
+        
+        var start = 1 + (qparams.page-1)*qparams.pagesize; 
+        var end   = start-1 + docs.length; 
+        %>
+        <div id="tabs-1">
+            <div class="tab_content">
+            <% if (docs.length > 0) {
+                var villactr = (qparams.page -1)*qparams.pagesize;
+                docs.forEach(function(doc) {
+                    var street_name = typeof doc.address__street_name == 'undefined' ? '' : doc.address__street_name;
+                    var location = typeof doc.address__location == 'undefined' ? '' : doc.address__location;
+                    var city = typeof doc.address__city == 'undefined' ? '' : doc.address__city;
+                    var state = typeof doc.address__state == 'undefined' ? '' : doc.address__state;
+                    var title = typeof doc.title == 'undefined' ? '' : doc.title;
+                    var guests = typeof doc.guests == 'undefined' ? '' : doc.guests;
+                    var reviews = typeof doc.reviews == 'undefined' ? 0 : doc.reviews;
+                    var rating = typeof doc.rating == 'undefined' ? 1 : doc.rating;
+                    var rate = typeof doc.average_rate == 'undefined' ? 0 : doc.average_rate; 
+                    var icity = city.replace(/\s+/, '').toLowerCase();
+                    if (typeof doc.images != 'undefined') {
+                        var image = doc.images[0];     
+                        doc.image = '/images/listings/'+icity+'/'+image;
+                    }
+                    else {
+                        doc.image = '/images/listings/default_img.jpg';
+                    }
+                    doc.link = '/list/id='+doc.id+'&showtab=0'; %>
+                    <div class="search_result">
+                    <div class="search_no"><%= ++villactr %></div>
+                    <div class="villa_image">  <a href="<%=doc.link%>"> <img src="<%=doc.image%>" alt="resort name" /></a>  
+                    </div>
+                    <div class="favorite">  <img src="/images/icon_favorite.jpg" alt="Favorite" /> </div>
+                    <div class="resort_details">
+                        <h2><a href="<%=doc.link%>"><%=doc.title%></a></h2>
+                        <p>
+                            <%=street_name%>,
+                            <%=location%>,
+                            <%=city%>,
+                            <%=state%>
+                            <span>Guests: &nbsp;<%=guests%></span>
+                        </p>
+                        <div class="reviews">  <p><%=reviews%></p> <span>Reviews</span>  
+                        </div>
+                        <div class="ratings"> <!--golden and silver stars-->
+                            <ul>
+                                <% for(var j=0; (j<rating) && (j < 5); j++) { %>
+								    <li><img src="/images/icon_ratings_gold.jpg"/></li>
+                                <% } %>
+								<% for(var j=rating; j<5; j++) { %>
+							        <li><img src="/images/icon_ratings_silver.jpg"/></li>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <p>
+                            <img src="/images/symbl_rupee.jpg" alt="Rupee"/><%=rate%>
+                        </p>
+                        <span>per night</span>
+                        <span></span> 
+                    </div>
+                    </div>
+             <% });  
+            } else { %>
+                <p>No results were returned from search.</p>
+            <% } %>
+            </div>
+        </div>
+        <div id="tabs-2">
+            <div class="tab_content">
+                <% if (docs.length > 0) { 
+                    var villactr = (qparams - 1) * qparams.pagesize; 
+                    docs.forEach(function(doc) { 
+                        var icity = doc.address__city.replace(/\s+/, '').toLowerCase();
+                        if (typeof doc.images != 'undefined') {
+                            var image = doc.images[0];     
+                            doc.image = '/images/listings/'+icity+'/'+image;
+                        }
+                        else {
+                            doc.image = '/images/listings/default_img.jpg';
+                        }
+                        doc.title = doc.title.replace(/^(.{24}).+$/, '$1...', 'g'); 
+                        doc.link = '/list/id='+doc.id+'&showtab=0'; %>
+                        <div class="wrpr_photo">
+                            <div class="search_no"><%=++villactr%></div>
+                            <div class="photo_img"><a href="<%=doc.link%>"><img src="<%=doc.image%>"></a></div>
+                            <div class="details">
+                                <h4><a href="<%=doc.link%>"><%=doc.title%></a></h4>
+                                <p><%=doc.address__city%>,<%=doc.address__state%></p>
+                                <span>Rs. <%=doc.average_rate%></span>
+                                <div class="favorite"><a href="#"><img src="/images/icon_favorite.jpg" alt="Favorite" /></a></div>
+                            </div>
+                        </div>
+                    <% });
+                } else { %>
+                    <p>No results were returned from search.</p>
+                <% } %>
+            </div>
+        </div>
+        <div id="tabs-3">
+            <div class="tab_content">
+                <% if (docs.length > 0) { %>
+                    <div class="tab_search_map" id="tab_search_map_div">
+                    </div>
+                <% } else { %>
+                    <p>No results were returned from search.</p>
+                <% } %>
+            </div>
+        </div>
+        <div id="refine_search">
+            <div class="ui-tabs-panel ui-widget-content ui-corner-bottom">
+                <% if (docs.length > 0) { %>
+                    <div class="display_no">
+                        <p>Displaying <span><%=start%></span> — <span><%=end%></span> of <span><%=docs.length%></span> listings</p>
+                    </div>
+                    <div class="pagination"><!--pagination-->
+                        <ul>
+                            <% [pg1, pg2, pg3].forEach(function(pg) {
+                                    if (pg == thispage) { %>
+                                        <li class="current"><%=pg%></li>
+                                    <% } else if (pg != null) { %>
+                                        <li><a href="#" onclick="setPage(<%=pg%>);validate_default();document.search_form.submit();"><%=pg%></a></li>
+                                    <% } %>
+                            <% }); %>
+                        </ul>
+                    </div>
+                    <div class="l_page_buttons"><!--Previous Next Page buttons-->
+                    <% if (prevpagebtn != null) { %>
+                        <a href="#" onclick="setPage(<%=prevpagebtn%>);validate_default();document.search_form.submit();">
+                            <div class="btn_prev_page"><img src="/images/btn_prev_page.jpg" alt="Previous Page"/></div>
+                        </a>
+                    <% }%>
+                    <% if (nextpagebtn != null) { %>
+                        <a href="#" onclick="setPage(<%=nextpagebtn%>);validate_default();document.search_form.submit();">
+                            <div class="btn_next_page"><img src="/images/btn_next.jpg" alt="Next Page" /></div>
+                        </a>
+                    <% } %>
+                    </div><!--Previous Next Page buttons ends-->
+                <% } %>
+            </div>
+        </div>
+    </div>
+  </div><!--search result ends here-->
+  <div class="l_right_side_panel v_right_side_panel">
+    <div>
+        <h3>Refine Results</h3>
+        <p id="total_hits"><%= count %> Results</p>
+    </div>
+    <div id="map" class="map">
+    </div>
+    <div class="l_refine_results v_refine_results">
+        <div id="accordion">
+            <h4><a href="#">Price</a></h4>
+            <div class="acc_section">
+                <div id="price_slider"></div>
+                <p>
+                    <label style="margin-top:20px" for="price_range">Price Range:</label>
+                    <input style="color:#0099CC;float:left;margin-top:-15px;background-color:#F5F5F5;border:none;" type="text" id="price_range" name="price_range" value="" style="border:0; color:#f6931f; font-weight:bold;" />
+                </p>
+            </div>
+
+            <% var vhtml; 
+               var selected;
+               var sections = {'Amenities': 'amenities',
+                               'Onsite Services': 'onsite_services',
+                               'Suitability': 'suitability',
+                               'Neighborhood': 'address__location' }; 
+    
+               function gethtml(feature, facets, selected) {
+                    var maxvisible = 4;
+                    var visible = '';
+                    var notvisible = '';
+                    for (var i=0; i<facets.length; i+=2) {
+                        var fname =  facets[i].replace(/[\0-\x1F\x80-\xFF]/g, '');
+                        fname = fname.replace(/["]*/g, '');
+                        var fcount = facets[i+1]; 
+                        var checked = '';
+                        if (fcount > 0) {
+                            if ((selected != null) && selected.some(function(e) {
+                                return (e == fname);
+                            })) {
+                               checked = 'checked="yes"';
+                            }
+                            var tmp = '<input name="'+feature+'[]" value="'+fname+'" type="checkbox" class="l_styled"'+checked+'/><p>'+fname+'</p>';
+                            tmp += '<div class="l_room_nos">'+fcount+'</div>\n';
+                            if (i < (maxvisible*2)) {
+                                visible += tmp;
+                            }
+                            else {
+                                notvisible += tmp;
+                            }
+                        }
+                    }
+                    if (notvisible != '') {
+                        visible += '<div class="l_cta" style="margin-top:15px;clear:none;"><a href="#lb_search_zv" onclick="getFacetValues();" name="lightbox_zv">See more...</a></div>'+"\n";
+                        notvisible = '<div style="display:none;">\n'+notvisible+'</div>\n';
+                    }
+                    return visible + notvisible;
+               }
+            %>
+                  
+            <h4><a href="#">Room Type</a></h4>
+    
+            <div class="acc_section l_chkbox">
+                <%  var feature = 'shared';
+                    var no = '';
+                    var yes = '';
+                    if (typeof qparams.query[feature] != 'undefined') {
+                        qparams.query[feature].forEach(function(f) {
+                            if (f.match(/yes/i)) {
+                                yes = 'checked="yes"';
+                            }
+                            if (f.match(/no/i)) {
+                                no = 'checked="yes"';
+                            }
+                        });
+                    }
+                %>
+                <% if (typeof facets[feature] !== 'undefined') { 
+                    for (var i=0; i<facets[feature].length; i+=2) {
+                        var fname =  facets[feature][i].replace(/[\0-\x1F\x80-\xFF]/g, '');
+                        fname = fname.replace(/["]*/g, '');
+                        var fcount = facets[feature][i+1]; 
+                        if (fname == 'no') { %>
+                            <input type="checkbox" name="<%=feature%>[]" value="no" class="l_styled" <%=no%>/><p>Entire home/villa</p>
+                            <div class="l_room_nos"><%=fcount%></div>
+                        <% } else if (fname == 'yes') { %>
+                            <input type="checkbox" name="<%=feature%>[]" value="yes" class="l_styled" <%=yes%>/><p>Shared</p>
+                            <div class="l_room_nos"><%=fcount%></div>
+                        <% } 
+                     } 
+                  } %>
+            </div>
+
+            <% for (key in sections) { %>
+                <h4><a href="#"><%=key%></a></h4>
+                <div class="acc_section l_chkbox">
+                   <% vhtml = '';
+                   if (typeof facets[sections[key]] !== 'undefined') {
+                        selected = typeof qparams.query[sections[key]] !== 'undefined' ? qparams.query[sections[key]] : null; %>
+                        <%- gethtml(sections[key], facets[sections[key]], selected) %>
+                <% } %>        
+                </div>
+            <% } %>
+        
+            <h4 style="border-bottom-width:0px;"><a href="#">Keywords</a></h4>
+        
+            <div class="acc_section">
+                <% var keywords = typeof qparams.query.keywords !== 'undefined' ? qparams.query.keywords : ''; %>
+                <input class="defaultText" style="width:100%;" type="text" name="keywords" id="keywords" title="Enter Keywords"  value="<%=keywords%>"/>
+            </div>
+    
+        </div>
+    </div>
+    <div id="boxes">
+        <div id="color_box">
+        <div id="lb_search_zv" style="height: 447px; width: 656px; background:none;" class="lb_window_zv">
+            <div class="close cboxClose1"></div>
+            <div>
+                <div style="float: left;" class="cboxTopLeft"></div>
+                <div style="float: left; width: 610px;" class="cboxTopCenter"></div>
+                <div style="float: left;" id="cboxTopRight"></div>
+            </div>
+            
+            <div style="clear: left;">
+                <div style="float: left; height: 401px;" class="cboxMiddleLeft"></div>
+                    <div style="float: left; width: 630px; height: 430px;" class="cboxContent">
+                        <div style="display: block; width: 630px; overflow: auto;" class="cboxLoadedContent">
+
+                            <div class="filters_lightbox new-modal">
+                                <div id="tabs1">
+                                    <h2 class="clearfix">
+                                        <ul class="filters_lightbox_nav">
+                                            <li class="filters_lightbox_nav_element"><a href="#tab1" style="padding:5px 10px;">Room Type</a></li>
+                                            <li class="filters_lightbox_nav_element active"><a href="#tab2" style="padding:5px 10px;">Amenities</a></li>
+                                            <li class="filters_lightbox_nav_element"><a href="#tab3" style="padding:5px 10px;">Services</a></li>
+                                            <li class="filters_lightbox_nav_element"><a href="#tab4" style="padding:5px 10px;">Neighborhood</a></li>
+                                        </ul>
+                                    </h2>
+
+                                    <div class="segment nopadding lightbox_filters"><!--ctnt tab-->
+
+                                        <div> <!-- Room Type -->
+                                            <ul id="tab1" style="background-image:none;">
+                                                <li class="lightbox_filter_container">
+                                                    <div class="lightbox_filters_left_column"> 
+                                                        <ul class="search_filter_content">
+                                                            <div class="lbox_shared l_chkbox">
+                                                            </div>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul><!--ctnt first tab ends-->
+                                        </div> <!--Room Type-->
+                                        
+                                        <div><!-- Amenities -->
+                                            <ul id="tab2" style="background-image:none;">
+                                                <li class="lightbox_filter_container"><!--ctnt second tab-->
+                                                    <ul class="search_filter_content">
+                                                       <div class="lbox_amenities l_chkbox">
+                                                       </div>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div><!--Amenities-->
+                                    
+                                        <div> <!--Service/Suitability-->
+                                            <ul id="tab3" style="background-image:none;">
+                                                <li class="lightbox_filter_container"><!--ctnt forth tab-->
+                                                    
+                                                    <div class="lightbox_filters_left_column">
+                                                        <h3>Onsite Services</h3>
+                                                        <ul class="search_filter_content">
+                                                        <div class="lbox_onsite_services l_chkbox">
+                                                        </div> 
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="lightbox_filters_right_column">
+                                                        <h3>Suitability</h3>
+                                                        <ul class="search_filter_content">
+                                                        <div class="lbox_suitability l_chkbox">
+                                                        </div>
+                                                        </ul>
+                                                    </div>
+                                               
+                                                </li>
+                                            </ul><!--ctnt forth tab ends-->
+                                        </div><!--Service/Suitability-->
+
+                                    <div> <!--Neighbourhood -->
+                                        <ul id="tab4" style="background-image: none;">
+                                            <li class="lightbox_filter_container"> <!--ctnt third tab-->
+                                                <div class="lightbox_filters_left_column">
+                                                    <!-- <h3>Neighbourhood</h3>  -->
+                                                    <ul class="search_filter_content">
+                                                        <div class="lbox_address__location l_chkbox"></div>
+                                                    </ul>
+                                                </div>
+                                                <div class="lightbox_filters_right_column">
+                                                    <!-- <h3>Neighbourhood</h3>  -->
+                                                    <ul class="search_filter_content">
+                                                        <div class="lbox_address__location_r l_chkbox"></div>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div> <!--Neighbourhood -->
+                                </div>
+                                </div>
+                            </div>
+                        <div class="lightbox_filter_action_area segment buttons">
+                            <a href="#" class="close">Cancel</a>
+                                <input id="lightbox_search_button" class="button-glossy green" value="Search" type="submit" onclick="setSelections();setPage(1); validate_default();return true;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div> <!--  boxes -->
+
+<div id="mask_zv"></div>
+    </form>
+  </div><!-- content ends here -->
+  <% include footer %>
+  </div><!-- wrapper ends here -->
+  <script type="text/javascript">
+    <?php echo $this->map()->setMapFromSearchResults($this->results, 'map');?>
+  </script>
+  </body>
+</html> 

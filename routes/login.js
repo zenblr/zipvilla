@@ -19,7 +19,8 @@ exports.login = function(req, res){
                 req.session.user = user;
                 req.session.isadmin = isAdmin;
                 req.session.expires = new Date(Date.now() + 20000);
-                res.render('index', {loggedin: user, isadmin: isAdmin}); 
+                res.redirect('/');
+                //res.render('index', {loggedin: user, isadmin: isAdmin}); 
             }
             else {
                 res.render('login'); 
